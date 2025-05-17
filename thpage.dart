@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+import 'hour_data.dart';
 
-class THPage extends StatelessWidget {  // Переименовано
+class THPage extends StatelessWidget {
+  final List<HourData> hourlyData;
+
+  const THPage({required this.hourlyData});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,30 +17,22 @@ class THPage extends StatelessWidget {  // Переименовано
         ),
       ),
       backgroundColor: Colors.deepPurple[50],
-      body: ListView(
+      body: ListView.builder(
         padding: EdgeInsets.all(20),
-        children: [
-          _buildHourCard('9 AM', '☀️', '24°C'),
-          _buildHourCard('12 PM', '⛅', '26°C'),
-          _buildHourCard('3 PM', '🌤️', '28°C'),
-          _buildHourCard('6 PM', '🌥️', '25°C'),
-          SizedBox(height: 20),
-          OutlinedButton(
-            child: Text('Back to Home'),
-            onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-          ),
-        ],
+        itemCount: hourlyData.length,
+        itemBuilder: (context, index) => _buildHourCard(hourlyData[index]),
       ),
     );
   }
 
-  Widget _buildHourCard(String time, String icon, String temp) {
+  @protected
+  Widget _buildHourCard(HourData data) {
     return Card(
       elevation: 3,
       child: ListTile(
-        leading: Text(icon, style: TextStyle(fontSize: 30)),
-        title: Text(time, style: TextStyle(fontWeight: FontWeight.bold)),
-        trailing: Text(temp, style: TextStyle(fontSize: 18)),
+        leading: Text(data.icon, style: TextStyle(fontSize: 30)),
+        title: Text(data.time, style: TextStyle(fontWeight: FontWeight.bold)),
+        trailing: Text(data.temp, style: TextStyle(fontSize: 18)),
       ),
     );
   }

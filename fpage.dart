@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class FPage extends StatelessWidget {  // Переименовано
+class FPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +14,7 @@ class FPage extends StatelessWidget {  // Переименовано
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/sun.png', height: 150),
+            Icon(Icons.wb_sunny, size: 150, color: Colors.amber), // Замена изображения
             SizedBox(height: 40),
             FilledButton.icon(
               icon: Icon(Icons.cloud),
@@ -26,7 +24,7 @@ class FPage extends StatelessWidget {  // Переименовано
                 padding: MaterialStateProperty.all(
                     EdgeInsets.symmetric(vertical: 20, horizontal: 40)),
               ),
-              onPressed: () => Navigator.pushNamed(context, '/spage'),
+              onPressed: () => Navigator.pushNamed(context, '/forecast'),
             ),
           ],
         ),

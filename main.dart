@@ -15,8 +15,8 @@ class WeatherExplorer extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => PageA(),
-        '/pageB': (context) => PageB(),
-        '/pageC': (context) => PageC(),
+        '/spage': (context) => PageB(),
+        '/thpage': (context) => PageC(),
       },
     );
   }
